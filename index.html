@@ -20,32 +20,32 @@
         <section class="input-section">
           <h2>Inputs</h2>
 
-          <!-- Corrected Hemisphere Label -->
+          <!-- Hemisphere selector -->
           <div>
-            <label for="northern">Hemisphere:</label>
-            <input type="radio" id="northern" name="hemisphere" value="northern" checked> Northern
-            <input type="radio" id="southern" name="hemisphere" value="southern"> Southern
+            <label for="hemisphere-northern">Hemisphere:</label>
+            <input type="radio" id="hemisphere-northern" name="hemisphere" value="northern" checked> Northern
+            <input type="radio" id="hemisphere-southern" name="hemisphere" value="southern"> Southern
           </div>
           
-          <!-- Corrected Latitude Input Label -->
+          <!-- Latitude input -->
           <div>
             <label for="latitude-slider">Latitude (10° - 70°):</label>
-            <input type="range" id="latitude-slider" min="10" max="70" step="1" value="20" required>
-            <input type="number" id="latitude-number" min="10" max="70" step="1" value="20" required>
+            <input type="range" id="latitude-slider" min="10" max="70" step="any" value="20" required>
+            <input type="number" id="latitude-number" min="10" max="70" step="any" value="20" required>
           </div>
           
-          <!-- Corrected Sundial Diameter Label -->
+          <!-- Diameter input -->
           <div>
             <label for="diameter-slider">Sundial Diameter (120 - 1000):</label>
-            <input type="range" id="diameter-slider" min="120" max="1000" step="10" value="260" required>
-            <input type="number" id="diameter-number" min="120" max="1000" step="10" value="260" required>
+            <input type="range" id="diameter-slider" min="120" max="1000" step="any" value="260" required>
+            <input type="number" id="diameter-number" min="120" max="1000" step="any" value="260" required>
           </div>
           
-          <!-- Corrected Numerals Label -->
+          <!-- Numerals selector -->
           <div>
-            <label for="numbers">Numerals:</label>
-            <input type="radio" id="numbers" name="numerals" value="numbers" checked> Numbers
-            <input type="radio" id="roman" name="numerals" value="roman"> Roman Numerals
+            <label for="numerals-numbers">Numerals:</label>
+            <input type="radio" id="numerals-numbers" name="numerals" value="numbers" checked> Numbers
+            <input type="radio" id="numerals-roman" name="numerals" value="roman"> Roman Numerals
           </div>
 
         </section>
