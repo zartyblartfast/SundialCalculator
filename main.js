@@ -1,28 +1,31 @@
-// Example to generate a sundial using D3.js or SVG.js
+document.addEventListener('DOMContentLoaded', function () {
+  // Latitude elements
+  const latitudeSlider = document.getElementById('latitude-slider');
+  const latitudeNumber = document.getElementById('latitude-number');
 
-// SunCalc.js example to get solar noon and sun azimuth at a given latitude
-const latitude = 51.5074; // London latitude
-const date = new Date();
+  // Sundial Diameter elements
+  const diameterSlider = document.getElementById('diameter-slider');
+  const diameterNumber = document.getElementById('diameter-number');
 
-const sunPosition = SunCalc.getPosition(date, latitude, 0);
-const solarNoon = SunCalc.getTimes(date, latitude, 0).solarNoon;
+  // Latitude synchronization
+  latitudeSlider.addEventListener('input', function () {
+    latitudeNumber.value = latitudeSlider.value;
+  });
 
-console.log('Solar Noon:', solarNoon);
-console.log('Sun Azimuth:', sunPosition.azimuth);
+  latitudeNumber.addEventListener('input', function () {
+    if (latitudeNumber.value >= 10 && latitudeNumber.value <= 70) {
+      latitudeSlider.value = latitudeNumber.value;
+    }
+  });
 
-// Example with SVG.js to create a sundial
-const draw = SVG().addTo('#sundial').size(300, 300);
-const circle = draw.circle(200).fill('none').stroke({ width: 2 });
+  // Sundial Diameter synchronization
+  diameterSlider.addEventListener('input', function () {
+    diameterNumber.value = diameterSlider.value;
+  });
 
-// Example with D3.js (can be used to dynamically create hour lines)
-const svg = d3.select("#sundial")
-              .append("svg")
-              .attr("width", 300)
-              .attr("height", 300);
-
-svg.append("line")
-   .attr("x1", 150)
-   .attr("y1", 150)
-   .attr("x2", 250)
-   .attr("y2", 150)
-   .attr("stroke", "black");
+  diameterNumber.addEventListener('input', function () {
+    if (diameterNumber.value >= 120 && diameterNumber.value <= 1000) {
+      diameterSlider.value = diameterNumber.value;
+    }
+  });
+});
