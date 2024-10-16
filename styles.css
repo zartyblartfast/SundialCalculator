@@ -1,0 +1,89 @@
+/* Header styling similar to the Atmospheric Pressure Visualizer */
+header {
+  text-align: center;
+  background: linear-gradient(45deg, #b3ccdd, #6593f5, #0f2027);
+  padding: 25px 20px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header h1 {
+  margin: 0 0 10px 0;
+  font-weight: 300;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+header p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+
+/* Style for the sundial containers (real and flat Earth) */
+#sundial-real, #sundial-flat {
+  width: 100%;
+  max-width: 350px; /* Limit the size for visual clarity */
+  height: 350px; /* Set a consistent height for sundials */
+  border: 2px solid #ccc; /* Add a border for separation */
+  margin-bottom: 20px;
+  background-color: #fff; /* Set a clear background for sundials */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for gnomon diagrams */
+#gnomon-real, #gnomon-flat {
+  width: 100%;
+  max-width: 300px; /* Adjust size for clarity */
+  height: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #888;
+  background-color: #f9f9f9;
+}
+
+/* Styling for input buttons */
+input[type="radio"], input[type="number"], input[type="range"] {
+  margin-top: 10px;
+}
+
+/* Enhancing the button style */
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Adjusting for collapsible content */
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
