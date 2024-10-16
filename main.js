@@ -111,16 +111,18 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('Diameter:', diameter);
       console.log('Numerals:', numerals);
       console.log('Hemisphere:', hemisphere);
-
+  
       // Calculate the hour angles
       const hourAngles = calculateHourAngles(latitude);
-
+  
       // Log the calculated hour angles
       console.log('Calculated Hour Angles:', hourAngles);
-
+  
       // Add logic here to use the hour angles for sundial rendering
     }
   
-    // Call updateSundial when the page loads
-    updateSundial();
+    // Trigger updateSundial on page load to show default values in the console
+    window.onload = function() {
+      updateSundial();
+    };
 });
