@@ -115,9 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
       // Calculate the hour angles
       const hourAngles = calculateHourAngles(latitude);
 
-      // Log the calculated hour angles
-      //console.log('Calculated Hour Angles:', hourAngles);
-
       // Add logic here to use the hour angles for sundial rendering
     }
 
