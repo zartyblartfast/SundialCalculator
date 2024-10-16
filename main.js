@@ -19,31 +19,33 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to calculate hour angles for a horizontal sundial using 15-minute intervals
     function calculateQuarterHourAngles(latitude) {
         console.log("Calculating hour angles with latitude: ", latitude); // Log latitude
-    
+
         // Represent 6AM to 6PM with 15-minute intervals
-        const intervals = [
-            0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 
-            4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6
-        ];
+        const intervals = [];
+        for (let hour = -6; hour <= 6; hour++) {
+            for (let minute = 0; minute < 60; minute += 15) {
+                intervals.push(hour + minute / 60);
+            }
+        }
         const hourAngles = [];
-    
+
         // Convert latitude to radians
         const radiansLatitude = latitude * (Math.PI / 180);
-    
+
         intervals.forEach(function(interval) {
             const hourAngleDegrees = 15 * interval; // Hour angle in degrees (15 degrees per hour from noon)
             const radiansHourAngle = hourAngleDegrees * (Math.PI / 180); // Convert hour angle to radians
-    
+
             // Formula: tan(theta) = tan(hour angle) * sin(latitude)
             const tanTheta = Math.tan(radiansHourAngle) * Math.sin(radiansLatitude);
-    
+
             // Calculate the angle in degrees (converting back from radians)
             const theta = Math.atan(tanTheta) * (180 / Math.PI);
-    
+
             // Push the result into the hourAngles array, rounding to 2 decimal places
             hourAngles.push(Number(theta.toFixed(2)));
         });
-    
+
         console.log('Calculated Hour Angles (15-minute intervals):', hourAngles); // Log hour angles
         return hourAngles;
     }
