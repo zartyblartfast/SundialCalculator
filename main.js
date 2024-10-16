@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
       return Number(value).toFixed(2);
     }
 
-    // Function to calculate hour angles accurately based on sundial formulas
+    // Function to calculate hour angles accurately based on the sundial formula
     function calculateHourAngles(latitude) {
         console.log("Calculating hour angles with latitude: ", latitude); // Log latitude
     
-        const hours = [1, 2, 3, 4, 5, 6]; // Represent 1PM to 6PM (symmetrical to 11AM to 6AM)
+        const hours = [1, 2, 3, 4, 5, 6]; // Represent 1PM to 6PM (symmetrical for AM hours)
         const hourAngles = [];
     
         // Convert latitude to radians
