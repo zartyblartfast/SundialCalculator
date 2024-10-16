@@ -34,13 +34,20 @@ document.addEventListener('DOMContentLoaded', function () {
       return [];
     }
 
+    // Ensure the calculation logic is being processed correctly
+    console.log("Processing hour angles with latitude (radians): ", latitude * (Math.PI / 180));
+
     hours.forEach(function(hour) {
       const hourAngle = 15 * (12 - hour); // Degrees from solar noon (15 degrees per hour)
       const radiansHourAngle = hourAngle * (Math.PI / 180); // Convert to radians
       const radiansLatitude = latitude * (Math.PI / 180); // Convert latitude to radians
 
+      console.log("Hour: ", hour, " Hour Angle: ", hourAngle, "Radians Hour Angle: ", radiansHourAngle);
+
       const tanTheta = Math.sin(radiansHourAngle) * Math.tan(radiansLatitude); // Trigonometric calculation
       const theta = Math.atan(tanTheta) * (180 / Math.PI); // Convert back to degrees
+
+      console.log("Theta for hour ", hour, ": ", theta); // Log theta for each hour
 
       hourAngles.push(roundToTwoDecimals(theta));
     });
