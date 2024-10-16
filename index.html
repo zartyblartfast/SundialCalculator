@@ -1,13 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Sundial Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Sundial Calculator for Real vs Flat Earth</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-    <div id="sundial"></div>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.0.16/svg.min.js"></script>
-    <script src="https://unpkg.com/suncalc"></script>
-    <script src="main.js"></script>
+  <header>
+    <h1>Sundial Calculator for Real vs Flat Earth</h1>
+    <p>Compare a real-world sundial with a flat Earth model</p>
+  </header>
+
+  <main>
+    <div class="main-content">
+      <div class="input-output-container">
+        <section class="input-section">
+          <h2>Inputs</h2>
+
+          <!-- Hemisphere selector -->
+          <div>
+            <label for="hemisphere">Hemisphere:</label>
+            <input type="radio" id="northern" name="hemisphere" value="northern" checked> Northern
+            <input type="radio" id="southern" name="hemisphere" value="southern"> Southern
+          </div>
+
+          <!-- Latitude input -->
+          <div>
+            <label for="latitude">Latitude (10° - 70°):</label>
+            <input type="range" id="latitude" min="10" max="70" step="any" value="20" required>
+            <input type="number" id="latitude-number" min="10" max="70" step="any" value="20" required>
+          </div>
+
+          <!-- Diameter input -->
+          <div>
+            <label for="diameter">Sundial Diameter (120 - 1000):</label>
+            <input type="range" id="diameter" min="120" max="1000" step="any" value="260" required>
+            <input type="number" id="diameter-number" min="120" max="1000" step="any" value="260" required>
+          </div>
+
+          <!-- Numerals selector -->
+          <div>
+            <label for="numerals">Numerals:</label>
+            <input type="radio" id="numbers" name="numerals" value="numbers" checked> Numbers
+            <input type="radio" id="roman" name="numerals" value="roman"> Roman Numerals
+          </div>
+
+        </section>
+
+        <section class="output-section">
+          <h2>Outputs</h2>
+          <!-- Placeholder for sundials -->
+          <div id="sundial-real"></div>
+          <div id="sundial-flat"></div>
+
+          <!-- Placeholder for gnomon diagram -->
+          <div id="gnomon-real"></div>
+          <div id="gnomon-flat"></div>
+
+          <!-- Placeholder for hour angles -->
+          <p>Real Sundial Hour Angles: <span id="real-hour-angles"></span></p>
+          <p>Flat Earth Sundial Hour Angles: <span id="flat-hour-angles"></span></p>
+        </section>
+      </div>
+
+      <!-- Collapsible sections -->
+      <button type="button" class="collapsible" id="how-to-use-button">How to Use the Sundial Calculator</button>
+      <div class="content"></div>
+
+      <button type="button" class="collapsible" id="detailed-calculation-button">Detailed Calculation Method</button>
+      <div class="content"></div>
+
+      <button type="button" class="collapsible" id="contact-us-button">Contact Us</button>
+      <div class="content"></div>
+    </div>
+
+    <script>
+    $(document).ready(function(){
+      $("#how-to-use-button + .content").load("how-to-use.html");
+      $("#detailed-calculation-button + .content").load("detailed-calculation.html");
+      $("#contact-us-button + .content").load("contact-us.html");
+    });
+    </script>
+
+  </main>
+
+  <!-- External scripts for interactive elements -->
+  <script src="collapsible.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
+
 </html>
