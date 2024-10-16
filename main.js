@@ -120,4 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Add logic here to use the hour angles for sundial rendering
     }
-  });
+  
+    // Call updateSundial when the page loads
+    updateSundial();
+});
