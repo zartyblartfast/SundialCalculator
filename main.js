@@ -65,10 +65,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const hours = [-90, -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75, 90, 105]; // Corresponds to 6 AM to 11 PM
         const latitudeRadians = latitude * (Math.PI / 180); // Convert latitude to radians
 
+        console.log(`Latitude in radians: ${latitudeRadians}`); // Debugging step
+
         for (let i = 0; i < hours.length; i++) {
             const hourAngleRadians = hours[i] * (Math.PI / 180); // Convert hour angle to radians
+            console.log(`Hour Angle (deg): ${hours[i]}, Hour Angle (rad): ${hourAngleRadians}`); // Debugging step
+
             const thetaRadians = Math.atan(Math.sin(latitudeRadians) * Math.tan(hourAngleRadians)); // Formula for hour line angle
             const thetaDegrees = thetaRadians * (180 / Math.PI); // Convert back to degrees
+
+            console.log(`Calculated angle for hour ${hours[i]}: ${thetaDegrees}`); // Debugging step
             hourAngles.push(thetaDegrees.toFixed(2)); // Store angle, rounded to 2 decimal places
         }
 
