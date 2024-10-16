@@ -1,11 +1,9 @@
 /* Header styling similar to the Atmospheric Pressure Visualizer */
 header {
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  padding: 20px;
   text-align: center;
-  color: white;
-  font-size: 24px;
-  min-height: 100px;
+  background: linear-gradient(45deg, #b3ccdd, #6593f5, #0f2027);
+  padding: 25px 20px;
+  color: white; /* Change the text color to white for better visibility */
 }
 
 header h1 {
