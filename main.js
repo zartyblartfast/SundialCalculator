@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Function to round values to two decimal places
     function roundToTwoDecimals(value) {
-      return parseFloat(value).toFixed(2);
+      return Number(value).toFixed(2);
     }
   
     // Update sundial dynamically based on input changes
@@ -34,13 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Event listeners for updating sundial dynamically
     latitudeSlider.addEventListener('input', function () {
-      latitudeNumber.value = roundToTwoDecimals(latitudeSlider.value);
+      latitudeNumber.value = roundToTwoDecimals(this.value);
       updateSundial();
     });
   
     latitudeNumber.addEventListener('input', function () {
-      if (latitudeNumber.value >= 10 && latitudeNumber.value <= 70) {
-        latitudeSlider.value = latitudeNumber.value;
+      if (this.value >= 10 && this.value <= 70) {
+        latitudeSlider.value = this.value;
+        latitudeNumber.value = roundToTwoDecimals(this.value);
         updateSundial();
       }
     });
