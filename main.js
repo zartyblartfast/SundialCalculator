@@ -108,7 +108,10 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Hemisphere:', hemisphere);
 
         // Calculate the hour angles
-        const hourAngles = calculateHourAngles(latitude);
+        const hourAngles = calculateQuarterHourAngles(latitude);
+
+        // Log the calculated hour angles
+        console.log('Calculated Hour Angles (15-minute intervals):', hourAngles);
 
         // Add logic here to use the hour angles for sundial rendering
     }
