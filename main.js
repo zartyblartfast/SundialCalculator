@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const hemisphereRadios = document.querySelectorAll('input[name="hemisphere"]');
   const numeralsRadios = document.querySelectorAll('input[name="numerals"]');
 
+  // Function to round values
+  function roundToOneDecimal(value) {
+    return parseFloat(value).toFixed(1); // Round to 1 decimal place
+  }
+
   // Update sundial dynamically based on input changes
   function updateSundial() {
     const latitude = parseFloat(latitudeNumber.value);
@@ -24,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Event listeners for updating sundial dynamically
   latitudeSlider.addEventListener('input', function () {
-    latitudeNumber.value = latitudeSlider.value;
+    latitudeNumber.value = roundToOneDecimal(latitudeSlider.value); // Round latitude value
     updateSundial();
   });
 
