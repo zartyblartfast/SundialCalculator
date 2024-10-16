@@ -1,105 +1,67 @@
-// Wait until the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+  // Latitude elements
+  const latitudeSlider = document.getElementById('latitude-slider');
+  const latitudeNumber = document.getElementById('latitude-number');
 
-    // Get references to the HTML elements
-    const latitudeSlider = document.getElementById('latitude-slider');
-    const latitudeNumber = document.getElementById('latitude-number');
-    const diameterSlider = document.getElementById('diameter-slider');
-    const diameterNumber = document.getElementById('diameter-number');
-    
-    // Synchronize the latitude slider with the number input
-    latitudeSlider.addEventListener('input', function() {
-        const latitudeValue = latitudeSlider.value;
-        latitudeNumber.value = latitudeValue;
-        console.log(`Latitude changed to: ${latitudeValue}`);
-        updateSundial();
-    });
+  // Sundial Diameter elements
+  const diameterSlider = document.getElementById('diameter-slider');
+  const diameterNumber = document.getElementById('diameter-number');
 
-    // Synchronize the latitude number input with the slider
-    latitudeNumber.addEventListener('input', function() {
-        const latitudeValue = latitudeNumber.value;
-        latitudeSlider.value = latitudeValue;
-        console.log(`Latitude changed to: ${latitudeValue}`);
-        updateSundial();
-    });
+  // Hemisphere and Numerals elements
+  const hemisphereRadios = document.querySelectorAll('input[name="hemisphere"]');
+  const numeralsRadios = document.querySelectorAll('input[name="numerals"]');
 
-    // Synchronize the diameter slider with the number input
-    diameterSlider.addEventListener('input', function() {
-        const diameterValue = diameterSlider.value;
-        diameterNumber.value = diameterValue;
-        console.log(`Diameter changed to: ${diameterValue}`);
-        updateSundial();
-    });
+  // Update sundial dynamically based on input changes
+  function updateSundial() {
+    const latitude = parseFloat(latitudeNumber.value);
+    const diameter = parseFloat(diameterNumber.value);
+    const hemisphere = document.querySelector('input[name="hemisphere"]:checked').value;
+    const numerals = document.querySelector('input[name="numerals"]:checked').value;
 
-    // Synchronize the diameter number input with the slider
-    diameterNumber.addEventListener('input', function() {
-        const diameterValue = diameterNumber.value;
-        diameterSlider.value = diameterValue;
-        console.log(`Diameter changed to: ${diameterValue}`);
-        updateSundial();
-    });
+    // Call your sundial calculation function here
+    calculateSundial(latitude, diameter, numerals, hemisphere);
+  }
 
-    // Hemisphere change event listener
-    const hemisphereRadios = document.querySelectorAll('input[name="hemisphere"]');
-    hemisphereRadios.forEach(radio => {
-        radio.addEventListener('change', function(event) {
-            const hemisphere = event.target.value;
-            console.log(`Hemisphere changed to: ${hemisphere}`);
-            updateSundial();
-        });
-    });
-
-    // Numerals change event listener
-    const numeralsRadios = document.querySelectorAll('input[name="numerals"]');
-    numeralsRadios.forEach(radio => {
-        radio.addEventListener('change', function(event) {
-            const numeralsType = event.target.value;
-            console.log(`Numerals changed to: ${numeralsType}`);
-            updateSundial();
-        });
-    });
-
-    // Function to calculate hour line angles
-    function calculateHourLineAngles(latitude) {
-        const hourAngles = [];
-        const hours = [-90, -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75, 90, 105]; // Corresponds to 6 AM to 11 PM
-        const latitudeRadians = latitude * (Math.PI / 180); // Convert latitude to radians
-
-        console.log(`Calculating hour line angles for latitude: ${latitude}, latitude in radians: ${latitudeRadians}`);
-
-        for (let i = 0; i < hours.length; i++) {
-            const hourAngleRadians = hours[i] * (Math.PI / 180); // Convert hour angle to radians
-            console.log(`Hour ${hours[i]} deg converted to radians: ${hourAngleRadians}`);
-            
-            const thetaRadians = Math.atan(Math.sin(latitudeRadians) * Math.tan(hourAngleRadians)); // Formula for hour line angle
-            const thetaDegrees = thetaRadians * (180 / Math.PI); // Convert back to degrees
-            console.log(`Hour line angle for hour ${hours[i]}: ${thetaDegrees}`);
-            
-            hourAngles.push(thetaDegrees.toFixed(2)); // Store angle, rounded to 2 decimal places
-        }
-
-        return hourAngles;
-    }
-
-    // Function to update the sundial
-    function updateSundial() {
-        const latitude = parseFloat(latitudeSlider.value);
-        const diameter = diameterSlider.value;
-        const hemisphere = document.querySelector('input[name="hemisphere"]:checked').value;
-        const numerals = document.querySelector('input[name="numerals"]:checked').value;
-
-        console.log(`Updating sundial with:
-            Latitude: ${latitude}, 
-            Diameter: ${diameter}, 
-            Hemisphere: ${hemisphere}, 
-            Numerals: ${numerals}`);
-
-        // Calculate and log hour line angles based on latitude
-        console.log(`Calling calculateHourLineAngles with latitude: ${latitude}`);
-        const hourLineAngles = calculateHourLineAngles(latitude);
-        console.log(`Hour line angles for 6 AM to 11 PM at latitude ${latitude}:`, hourLineAngles.join(", "));
-    }
-
-    // Initial sundial update on load
+  // Event listeners for updating sundial dynamically
+  latitudeSlider.addEventListener('input', function () {
+    latitudeNumber.value = latitudeSlider.value;
     updateSundial();
+  });
+
+  latitudeNumber.addEventListener('input', function () {
+    if (latitudeNumber.value >= 10 && latitudeNumber.value <= 70) {
+      latitudeSlider.value = latitudeNumber.value;
+      updateSundial();
+    }
+  });
+
+  diameterSlider.addEventListener('input', function () {
+    diameterNumber.value = diameterSlider.value;
+    updateSundial();
+  });
+
+  diameterNumber.addEventListener('input', function () {
+    if (diameterNumber.value >= 120 && diameterNumber.value <= 1000) {
+      diameterSlider.value = diameterNumber.value;
+      updateSundial();
+    }
+  });
+
+  hemisphereRadios.forEach(function (radio) {
+    radio.addEventListener('change', updateSundial);
+  });
+
+  numeralsRadios.forEach(function (radio) {
+    radio.addEventListener('change', updateSundial);
+  });
+
+  // Example function for calculations (placeholder)
+  function calculateSundial(latitude, diameter, numerals, hemisphere) {
+    console.log('Calculating sundial with the following inputs:');
+    console.log('Latitude:', latitude);
+    console.log('Diameter:', diameter);
+    console.log('Numerals:', numerals);
+    console.log('Hemisphere:', hemisphere);
+    // Add further logic here for actual sundial calculations
+  }
 });
