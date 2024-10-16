@@ -1,3 +1,23 @@
+/* Header styling similar to the Atmospheric Pressure Visualizer */
+header {
+  background-color: #4CAF50;  /* Adjust to match the desired background color */
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 24px;  /* Adjust the size of the main header */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;  /* Larger font size for the main title */
+}
+
+header p {
+  margin: 5px 0;
+  font-size: 18px;  /* Slightly smaller font for the subtitle */
+  color: #eee;
+}
+
 /* Style for the sundial containers (real and flat Earth) */
 #sundial-real, #sundial-flat {
   width: 100%;
