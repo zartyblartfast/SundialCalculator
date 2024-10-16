@@ -65,10 +65,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const hours = [-90, -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75, 90, 105]; // Corresponds to 6 AM to 11 PM
         const latitudeRadians = latitude * (Math.PI / 180); // Convert latitude to radians
 
+        console.log(`Calculating hour line angles for latitude: ${latitude}, latitude in radians: ${latitudeRadians}`);
+
         for (let i = 0; i < hours.length; i++) {
             const hourAngleRadians = hours[i] * (Math.PI / 180); // Convert hour angle to radians
+            console.log(`Hour ${hours[i]} deg converted to radians: ${hourAngleRadians}`);
+            
             const thetaRadians = Math.atan(Math.sin(latitudeRadians) * Math.tan(hourAngleRadians)); // Formula for hour line angle
             const thetaDegrees = thetaRadians * (180 / Math.PI); // Convert back to degrees
+            console.log(`Hour line angle for hour ${hours[i]}: ${thetaDegrees}`);
+            
             hourAngles.push(thetaDegrees.toFixed(2)); // Store angle, rounded to 2 decimal places
         }
 
@@ -82,19 +88,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const hemisphere = document.querySelector('input[name="hemisphere"]:checked').value;
         const numerals = document.querySelector('input[name="numerals"]:checked').value;
 
-        // Log a message when the sundial updates (you can replace this with actual logic later)
         console.log(`Updating sundial with:
             Latitude: ${latitude}, 
             Diameter: ${diameter}, 
             Hemisphere: ${hemisphere}, 
             Numerals: ${numerals}`);
-        
+
         // Calculate and log hour line angles based on latitude
+        console.log(`Calling calculateHourLineAngles with latitude: ${latitude}`);
         const hourLineAngles = calculateHourLineAngles(latitude);
         console.log(`Hour line angles for 6 AM to 11 PM at latitude ${latitude}:`, hourLineAngles.join(", "));
-        
-        // Placeholder for actual sundial calculations and visual updates
-        // Example: update the sundial graphics, angle calculations, etc.
     }
 
     // Initial sundial update on load
