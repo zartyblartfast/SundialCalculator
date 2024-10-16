@@ -59,9 +59,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Function to update the sundial (currently logs placeholder output)
+    // Function to calculate hour line angles
+    function calculateHourLineAngles(latitude) {
+        const hourAngles = [];
+        const hours = [-90, -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75, 90, 105]; // Corresponds to 6 AM to 11 PM
+        const latitudeRadians = latitude * (Math.PI / 180); // Convert latitude to radians
+
+        for (let i = 0; i < hours.length; i++) {
+            const hourAngleRadians = hours[i] * (Math.PI / 180); // Convert hour angle to radians
+            const thetaRadians = Math.atan(Math.sin(latitudeRadians) * Math.tan(hourAngleRadians)); // Formula for hour line angle
+            const thetaDegrees = thetaRadians * (180 / Math.PI); // Convert back to degrees
+            hourAngles.push(thetaDegrees.toFixed(2)); // Store angle, rounded to 2 decimal places
+        }
+
+        return hourAngles;
+    }
+
+    // Function to update the sundial
     function updateSundial() {
-        const latitude = latitudeSlider.value;
+        const latitude = parseFloat(latitudeSlider.value);
         const diameter = diameterSlider.value;
         const hemisphere = document.querySelector('input[name="hemisphere"]:checked').value;
         const numerals = document.querySelector('input[name="numerals"]:checked').value;
@@ -72,6 +88,10 @@ document.addEventListener('DOMContentLoaded', function() {
             Diameter: ${diameter}, 
             Hemisphere: ${hemisphere}, 
             Numerals: ${numerals}`);
+        
+        // Calculate and log hour line angles based on latitude
+        const hourLineAngles = calculateHourLineAngles(latitude);
+        console.log(`Hour line angles for 6 AM to 11 PM at latitude ${latitude}:`, hourLineAngles.join(", "));
         
         // Placeholder for actual sundial calculations and visual updates
         // Example: update the sundial graphics, angle calculations, etc.
