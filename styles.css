@@ -4,20 +4,20 @@ header {
   background: linear-gradient(45deg, #b3ccdd, #6593f5, #0f2027);
   padding: 25px 20px;
   color: white;
-  font-family: Arial, sans-serif;
-  border: 5px solid red; /* This is a test to ensure our CSS is applied */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header h1 {
   margin: 0 0 10px 0;
   font-weight: 300;
-  font-size: 2.5em; /* This is another test change */
+  font-size: 2.5em;
+  letter-spacing: 1px;
 }
 
 header p {
   margin: 0;
   font-weight: 400;
-  font-style: italic; /* This is another test change */
+  font-size: 1.1em;
 }
 
 
