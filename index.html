@@ -1,59 +1,100 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Latitude elements
-  const latitudeSlider = document.getElementById('latitude-slider');
-  const latitudeNumber = document.getElementById('latitude-number');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Sundial Calculator for Real vs Flat Earth</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <!-- Keep only this header section -->
+  <header>
+    <h1>Sundial Calculator for Real vs Flat Earth</h1>
+    <p>Compare a real-world sundial with a flat Earth model</p>
+  </header>
 
-  // Sundial Diameter elements
-  const diameterSlider = document.getElementById('diameter-slider');
-  const diameterNumber = document.getElementById('diameter-number');
+  <main>
+    <div class="main-content">
+      <div class="input-output-container">
+        <section class="input-section">
+          <h2>Inputs</h2>
 
-  // Latitude synchronization
-  latitudeSlider.addEventListener('input', function () {
-    latitudeNumber.value = latitudeSlider.value;
-  });
+          <!-- Hemisphere selector -->
+          <div>
+            <label for="hemisphere">Hemisphere:</label>
+            <input type="radio" id="northern" name="hemisphere" value="northern" checked> Northern
+            <input type="radio" id="southern" name="hemisphere" value="southern"> Southern
+          </div>
 
-  latitudeNumber.addEventListener('input', function () {
-    if (latitudeNumber.value >= 10 && latitudeNumber.value <= 70) {
-      latitudeSlider.value = latitudeNumber.value;
-    }
-  });
+          <!-- Latitude input -->
+          <div>
+            <label for="latitude">Latitude (10° - 70°):</label>
+            <input type="range" id="latitude-slider" min="10" max="70" step="1" value="20" required>
+            <input type="number" id="latitude-number" min="10" max="70" step="1" value="20" required>
+          </div>
+          
+          <!-- Sundial Diameter input -->
+          <div>
+            <label for="diameter">Sundial Diameter (120 - 1000):</label>
+            <input type="range" id="diameter-slider" min="120" max="1000" step="10" value="260" required>
+            <input type="number" id="diameter-number" min="120" max="1000" step="10" value="260" required>
+          </div>
 
-  // Sundial Diameter synchronization
-  diameterSlider.addEventListener('input', function () {
-    diameterNumber.value = diameterSlider.value;
-  });
 
-  diameterNumber.addEventListener('input', function () {
-    if (diameterNumber.value >= 120 && diameterNumber.value <= 1000) {
-      diameterSlider.value = diameterNumber.value;
-    }
-  });
+          <!-- Numerals selector -->
+          <div>
+            <label for="numerals">Numerals:</label>
+            <input type="radio" id="numbers" name="numerals" value="numbers" checked> Numbers
+            <input type="radio" id="roman" name="numerals" value="roman"> Roman Numerals
+          </div>
 
-  // Handle Calculate button click
-  const calculateButton = document.getElementById('calculate-button');
-  calculateButton.addEventListener('click', function () {
-    const latitude = parseFloat(latitudeNumber.value);
-    const diameter = parseFloat(diameterNumber.value);
-    const numerals = document.querySelector('input[name="numerals"]:checked').value;
+          <!-- Calculate button -->
+          <div>
+            <button id="calculate-button" type="button">Calculate</button>
+          </div>
+        </section>
 
-    // Check Hemisphere selection
-    const hemisphere = document.querySelector('input[name="hemisphere"]:checked');
-    if (hemisphere) {
-      console.log('Hemisphere:', hemisphere.value);  // Should log the selected hemisphere
-    } else {
-      console.log('Hemisphere selection not found!');
-    }
+        <section class="output-section">
+          <h2>Outputs</h2>
+          <!-- Placeholder for sundials -->
+          <div id="sundial-real"></div>
+          <div id="sundial-flat"></div>
 
-    // Call your function to calculate hour lines and gnomon dimensions
-    calculateSundial(latitude, diameter, numerals, hemisphere ? hemisphere.value : null);
-  });
+          <!-- Placeholder for gnomon diagram -->
+          <div id="gnomon-real"></div>
+          <div id="gnomon-flat"></div>
 
-  // Example function for calculations (placeholder)
-  function calculateSundial(latitude, diameter, numerals, hemisphere) {
-    console.log('Calculating sundial with the following inputs:');
-    console.log('Latitude:', latitude);
-    console.log('Diameter:', diameter);
-    console.log('Numerals:', numerals);
-    console.log('Hemisphere:', hemisphere);
-  }
-});
+          <!-- Placeholder for hour angles -->
+          <p>Real Sundial Hour Angles: <span id="real-hour-angles"></span></p>
+          <p>Flat Earth Sundial Hour Angles: <span id="flat-hour-angles"></span></p>
+        </section>
+      </div>
+
+      <!-- Collapsible sections -->
+      <button type="button" class="collapsible" id="how-to-use-button">How to Use the Sundial Calculator</button>
+      <div class="content"></div>
+
+      <button type="button" class="collapsible" id="detailed-calculation-button">Detailed Calculation Method</button>
+      <div class="content"></div>
+
+      <button type="button" class="collapsible" id="contact-us-button">Contact Us</button>
+      <div class="content"></div>
+    </div>
+<!--
+    <script>
+    $(document).ready(function(){
+      $("#how-to-use-button + .content").load("how-to-use.html");
+      $("#detailed-calculation-button + .content").load("detailed-calculation.html");
+      $("#contact-us-button + .content").load("contact-us.html");
+    });
+    </script>
+-->
+  </main>
+
+  <!-- External scripts for interactive elements -->
+  <script src="collapsible.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
