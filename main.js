@@ -21,18 +21,34 @@ document.addEventListener('DOMContentLoaded', function () {
       return Number(value).toFixed(2);
     }
 
-    // Function to calculate hour angles
+    // Function to calculate hour angles accurately based on sundial formulas
     function calculateHourAngles(latitude) {
-      console.log("Calculating hour angles with latitude: ", latitude); // Log latitude
+        console.log("Calculating hour angles with latitude: ", latitude); // Log latitude
+    
+        const hours = [1, 2, 3, 4, 5, 6]; // Represent 1PM to 6PM (symmetrical to 11AM to 6AM)
+        const hourAngles = [];
+    
+        // Convert latitude to radians
+        const radiansLatitude = latitude * (Math.PI / 180);
+    
+        hours.forEach(function(hour) {
+            const hourAngleDegrees = 15 * hour; // Hour angle in degrees (15 degrees per hour from noon)
+            const hourAngleRadians = hourAngleDegrees * (Math.PI / 180); // Convert hour angle to radians
+    
+            // Formula: tan(theta) = sin(hour angle) * tan(latitude)
+            const tanTheta = Math.sin(hourAngleRadians) * Math.tan(radiansLatitude);
+    
+            // Calculate the angle in degrees (converting back from radians)
+            const theta = Math.atan(tanTheta) * (180 / Math.PI);
+    
+            // Push the result into the hourAngles array, rounding to 2 decimal places
+            hourAngles.push(Number(theta.toFixed(2)));
+        });
+    
+        console.log('Calculated Hour Angles:', hourAngles); // Log hour angles
+        return hourAngles;
+    }
 
-      const hours = [6, 7, 8, 9, 10, 11]; // Morning hours
-      const hourAngles = [];
-
-      // Check if the latitude is valid before proceeding
-      if (isNaN(latitude) || latitude < -90 || latitude > 90) {
-        console.error("Invalid latitude: ", latitude);
-        return [];
-      }
 
       // Ensure the calculation logic is being processed correctly
       console.log("Processing hour angles with latitude (radians): ", latitude * (Math.PI / 180));
