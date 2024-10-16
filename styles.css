@@ -1,17 +1,20 @@
 /* Header styling similar to the Atmospheric Pressure Visualizer */
 header {
   text-align: center;
-  background: linear-gradient(to right, #b3ccdd, #6593f5, #0f2027);
+  background: linear-gradient(45deg, #b3ccdd, #6593f5, #0f2027);
   padding: 25px 20px;
   color: white;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 header h1 {
   margin: 0 0 10px 0;
+  font-weight: 300; /* This makes the header text lighter */
 }
 
 header p {
   margin: 0;
+  font-weight: 400; /* This keeps the paragraph text normal */
 }
 
 
