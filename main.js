@@ -28,4 +28,25 @@ document.addEventListener('DOMContentLoaded', function () {
       diameterSlider.value = diameterNumber.value;
     }
   });
+
+  // Handle Calculate button click
+  const calculateButton = document.getElementById('calculate-button');
+  calculateButton.addEventListener('click', function () {
+    const latitude = parseFloat(latitudeNumber.value);
+    const diameter = parseFloat(diameterNumber.value);
+    const numerals = document.querySelector('input[name="numerals"]:checked').value;
+
+    // Call your function to calculate hour lines and gnomon dimensions
+    calculateSundial(latitude, diameter, numerals);
+  });
+
+  // Example function for calculations (placeholder)
+  function calculateSundial(latitude, diameter, numerals) {
+    // Perform calculations for hour lines and gnomon
+    console.log('Latitude:', latitude);
+    console.log('Diameter:', diameter);
+    console.log('Numerals:', numerals);
+
+    // Display calculated values (You can update the DOM elements with the results)
+  }
 });
