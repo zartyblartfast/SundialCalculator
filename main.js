@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return Number(value).toFixed(2);
     }
 
-    // Function to calculate hour angles accurately based on the sundial formula
+    // Function to calculate hour angles for a horizontal sundial using the correct formula
     function calculateHourAngles(latitude) {
         console.log("Calculating hour angles with latitude: ", latitude); // Log latitude
     
@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
         hours.forEach(function(hour) {
             const hourAngleDegrees = 15 * hour; // Hour angle in degrees (15 degrees per hour from noon)
-            const hourAngleRadians = hourAngleDegrees * (Math.PI / 180); // Convert hour angle to radians
+            const radiansHourAngle = hourAngleDegrees * (Math.PI / 180); // Convert hour angle to radians
     
-            // Formula: tan(theta) = sin(hour angle) * tan(latitude)
-            const tanTheta = Math.sin(hourAngleRadians) * Math.tan(radiansLatitude);
+            // Formula: tan(theta) = tan(hour angle) * sin(latitude)
+            const tanTheta = Math.tan(radiansHourAngle) * Math.sin(radiansLatitude);
     
             // Calculate the angle in degrees (converting back from radians)
             const theta = Math.atan(tanTheta) * (180 / Math.PI);
