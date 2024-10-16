@@ -35,18 +35,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const latitude = parseFloat(latitudeNumber.value);
     const diameter = parseFloat(diameterNumber.value);
     const numerals = document.querySelector('input[name="numerals"]:checked').value;
+    const hemisphere = document.querySelector('input[name="hemisphere"]:checked').value; // Get selected hemisphere
 
-    // Call your function to calculate hour lines and gnomon dimensions
-    calculateSundial(latitude, diameter, numerals);
-  });
-
-  // Example function for calculations (placeholder)
-  function calculateSundial(latitude, diameter, numerals) {
-    // Perform calculations for hour lines and gnomon
+    // Log the values for testing
     console.log('Latitude:', latitude);
     console.log('Diameter:', diameter);
     console.log('Numerals:', numerals);
+    console.log('Hemisphere:', hemisphere); // Log selected hemisphere
 
-    // Display calculated values (You can update the DOM elements with the results)
+    // Call your function to calculate hour lines and gnomon dimensions
+    calculateSundial(latitude, diameter, numerals, hemisphere);
+  });
+
+  // Example function for calculations (placeholder)
+  function calculateSundial(latitude, diameter, numerals, hemisphere) {
+    // Perform calculations for hour lines and gnomon based on latitude, diameter, numerals, and hemisphere
+    console.log('Calculating sundial with the following inputs:');
+    console.log('Latitude:', latitude);
+    console.log('Diameter:', diameter);
+    console.log('Numerals:', numerals);
+    console.log('Hemisphere:', hemisphere);
+
+    // Add further logic here for actual sundial calculations
   }
 });
