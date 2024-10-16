@@ -71,13 +71,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const hourAngleRadians = hours[i] * (Math.PI / 180); // Convert hour angle to radians
             console.log(`Hour Angle (deg): ${hours[i]}, Hour Angle (rad): ${hourAngleRadians}`); // Debugging step
 
-            const thetaRadians = Math.atan(Math.sin(latitudeRadians) * Math.tan(hourAngleRadians)); // Formula for hour line angle
-            const thetaDegrees = thetaRadians * (180 / Math.PI); // Convert back to degrees
+            try {
+                const thetaRadians = Math.atan(Math.sin(latitudeRadians) * Math.tan(hourAngleRadians)); // Formula for hour line angle
+                const thetaDegrees = thetaRadians * (180 / Math.PI); // Convert back to degrees
 
-            console.log(`Calculated angle for hour ${hours[i]}: ${thetaDegrees}`); // Debugging step
-            hourAngles.push(thetaDegrees.toFixed(2)); // Store angle, rounded to 2 decimal places
+                console.log(`Calculated angle for hour ${hours[i]}: ${thetaDegrees}`); // Debugging step
+                hourAngles.push(thetaDegrees.toFixed(2)); // Store angle, rounded to 2 decimal places
+            } catch (error) {
+                console.error(`Error calculating angle for hour ${hours[i]}:`, error);
+            }
         }
 
+        console.log(`Final hour angles array: ${hourAngles.join(', ')}`); // Debugging step
         return hourAngles;
     }
 
