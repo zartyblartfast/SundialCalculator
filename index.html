@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-  <!-- Keep only this header section -->
+  <!-- Header section -->
   <header>
     <h1>Sundial Calculator for Real vs Flat Earth</h1>
     <p>Compare a real-world sundial with a flat Earth model</p>
@@ -47,13 +47,20 @@
             <input type="radio" id="numerals-numbers" name="numerals" value="numbers" checked> Numbers
             <input type="radio" id="numerals-roman" name="numerals" value="roman"> Roman Numerals
           </div>
-
         </section>
 
         <section class="output-section">
           <h2>Outputs</h2>
           <!-- Placeholder for sundials -->
-          <div id="sundial-real"></div>
+          <div id="sundial-real">
+            <svg id="real-sundial-svg" width="400" height="200" viewBox="0 0 400 200">
+              <!-- Semi-circle for sundial -->
+              <path d="M 50 150 A 100 100 0 0 1 350 150" fill="none" stroke="black" stroke-width="2"/>
+              
+              <!-- Gnomon width (vertical split through the 12 PM mark) -->
+              <line x1="200" y1="150" x2="200" y2="50" stroke="black" stroke-width="1" />
+            </svg>
+          </div>
           <div id="sundial-flat"></div>
 
           <!-- Placeholder for gnomon diagram -->
@@ -64,16 +71,6 @@
           <p>Real Sundial Hour Angles: <span id="real-hour-angles"></span></p>
           <p>Flat Earth Sundial Hour Angles: <span id="flat-hour-angles"></span></p>
         </section>
-      </div>
-      
-      <div id="sundial-real">
-        <svg id="real-sundial-svg" width="400" height="200" viewBox="0 0 400 200">
-          <!-- Semi-circle for sundial -->
-          <path d="M 50 150 A 100 100 0 0 1 350 150" fill="none" stroke="black" stroke-width="2"/>
-          
-          <!-- Gnomon width (vertical split through the 12 PM mark) -->
-          <line x1="200" y1="150" x2="200" y2="50" stroke="black" stroke-width="1" />
-        </svg>
       </div>
 
       <!-- Collapsible sections -->
