@@ -54,16 +54,20 @@
           <!-- Placeholder for sundials -->
           <div id="sundial-real">
             <svg id="real-sundial-svg" width="400" height="200" viewBox="0 0 400 200">
-              <!-- Semi-circle for sundial -->
-              <path d="M 50 150 A 100 100 0 0 1 350 150" fill="none" stroke="black" stroke-width="2"/>
+              <!-- Left half of the semi-circle -->
+              <path d="M 50 150 A 100 100 0 0 1 199 150" fill="none" stroke="black" stroke-width="2"/>
+              <!-- Right half of the semi-circle -->
+              <path d="M 201 150 A 100 100 0 0 1 350 150" fill="none" stroke="black" stroke-width="2"/>
               
-              <!-- Base of the semi-circle -->
-              <line x1="50" y1="150" x2="350" y2="150" stroke="black" stroke-width="2"/>
+              <!-- Base of the semi-circle (left and right halves) -->
+              <line x1="50" y1="150" x2="199" y2="150" stroke="black" stroke-width="2"/>
+              <line x1="201" y1="150" x2="350" y2="150" stroke="black" stroke-width="2"/>
           
-              <!-- Gnomon width (vertical split through the 12 PM mark) -->
+              <!-- Gnomon width (vertical gap between the halves) -->
               <line x1="200" y1="150" x2="200" y2="50" stroke="black" stroke-width="1" />
             </svg>
           </div>
+
 
           <div id="sundial-flat"></div>
 
