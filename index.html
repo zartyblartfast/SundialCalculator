@@ -54,19 +54,23 @@
           <!-- Placeholder for sundials -->
           <div id="sundial-real">
             <svg id="real-sundial-svg" width="400" height="200" viewBox="0 0 400 200">
-              <!-- Left half of the semi-circle -->
-              <path d="M 50 150 A 100 100 0 0 1 199 150" fill="none" stroke="black" stroke-width="2"/>
-              <!-- Right half of the semi-circle -->
-              <path d="M 201 150 A 100 100 0 0 1 350 150" fill="none" stroke="black" stroke-width="2"/>
-              
-              <!-- Base of the semi-circle (left and right halves) -->
-              <line x1="50" y1="150" x2="199" y2="150" stroke="black" stroke-width="2"/>
-              <line x1="201" y1="150" x2="350" y2="150" stroke="black" stroke-width="2"/>
+              <!-- Left half of the split semi-circle -->
+              <path d="M 50 150 A 100 100 0 0 1 199.5 150" fill="none" stroke="black" stroke-width="2"/>
+              <!-- Right half of the split semi-circle -->
+              <path d="M 200.5 150 A 100 100 0 0 1 350 150" fill="none" stroke="black" stroke-width="2"/>
           
-              <!-- Gnomon width (vertical gap between the halves) -->
-              <line x1="200" y1="150" x2="200" y2="50" stroke="black" stroke-width="1" />
+              <!-- Vertical closing line for left half -->
+              <line x1="199.5" y1="150" x2="199.5" y2="50" stroke="black" stroke-width="2"/>
+          
+              <!-- Vertical closing line for right half -->
+              <line x1="200.5" y1="150" x2="200.5" y2="50" stroke="black" stroke-width="2"/>
+          
+              <!-- Base of the semi-circle (split halves) -->
+              <line x1="50" y1="150" x2="199.5" y2="150" stroke="black" stroke-width="2"/>
+              <line x1="200.5" y1="150" x2="350" y2="150" stroke="black" stroke-width="2"/>
             </svg>
           </div>
+
 
 
           <div id="sundial-flat"></div>
