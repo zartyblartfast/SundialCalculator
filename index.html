@@ -55,12 +55,18 @@
 
 <div id="sundial-real">
   <svg id="real-sundial-svg" width="400" height="200" viewBox="0 0 400 200">
+    <!-- Center line for reference -->
+    <line x1="200" y1="0" x2="200" y2="200" stroke="red" stroke-width="1" stroke-dasharray="5,5"/>
+    
     <g transform="translate(99.5, 50)">
       <!-- Left quarter-circle -->
       <path d="M 50 100 A 100 100 0 0 1 150 0" fill="none" stroke="black" stroke-width="2"/>
 
       <!-- Right quarter-circle -->
       <path d="M 151 0 A 100 100 0 0 1 251 100" fill="none" stroke="black" stroke-width="2"/>
+      
+      <!-- Center point for reference -->
+      <circle cx="150.5" cy="0" r="3" fill="blue"/>
     </g>
   </svg>
 </div>
